@@ -201,7 +201,8 @@ command! -bar -nargs=* -complete=customlist,ale#fix#registry#CompleteFixers ALEF
 " Suggest registered functions to use for fixing problems.
 command! -bar ALEFixSuggest :call ale#fix#registry#Suggest(&filetype)
 
-" Go to definition for tsserver and LSP
+" Go to declaration/definition for tsserver and LSP
+command! -bar -nargs=* ALEGoToDeclaration :call ale#declaration#GoToCommandHandler('', <f-args>)
 command! -bar -nargs=* ALEGoToDefinition :call ale#definition#GoToCommandHandler('', <f-args>)
 
 " Deprecated commands we have to keep for now.
@@ -209,7 +210,8 @@ command! -bar ALEGoToDefinitionInTab :call ale#definition#GoTo({'open_in': 'tab'
 command! -bar ALEGoToDefinitionInSplit :call ale#definition#GoTo({'open_in': 'split', 'deprecated_command': 'ALEGoToDefinitionInSplit'})
 command! -bar ALEGoToDefinitionInVSplit :call ale#definition#GoTo({'open_in': 'vsplit', 'deprecated_command': 'ALEGoToDefinitionInVSplit'})
 
-" Go to type definition for tsserver and LSP
+" Go to type declaration/definition for tsserver and LSP
+command! -bar -nargs=* ALEGoToTypeDeclaration :call ale#declaration#GoToCommandHandler('type', <f-args>)
 command! -bar -nargs=* ALEGoToTypeDefinition :call ale#definition#GoToCommandHandler('type', <f-args>)
 
 " Deprecated commands we have to keep for now.
@@ -266,6 +268,7 @@ nnoremap <silent> <Plug>(ale_reset_buffer) :ALEResetBuffer<Return>
 nnoremap <silent> <Plug>(ale_lint) :ALELint<Return>
 nnoremap <silent> <Plug>(ale_detail) :ALEDetail<Return>
 nnoremap <silent> <Plug>(ale_fix) :ALEFix<Return>
+nnoremap <silent> <Plug>(ale_go_to_declaration) :ALEGoToDeclaration<Return>
 nnoremap <silent> <Plug>(ale_go_to_definition) :ALEGoToDefinition<Return>
 nnoremap <silent> <Plug>(ale_go_to_type_definition) :ALEGoToTypeDefinition<Return>
 nnoremap <silent> <Plug>(ale_find_references) :ALEFindReferences<Return>
@@ -276,6 +279,9 @@ nnoremap <silent> <Plug>(ale_rename) :ALERename<Return>
 nnoremap <silent> <Plug>(ale_repeat_selection) :ALERepeatSelection<Return>
 
 " Deprecated <Plug> mappings
+nnoremap <silent> <Plug>(ale_go_to_declaration_in_tab) :ALEGoToDeclarationInTab<Return>
+nnoremap <silent> <Plug>(ale_go_to_declaration_in_split) :ALEGoToDeclarationInSplit<Return>
+nnoremap <silent> <Plug>(ale_go_to_declaration_in_vsplit) :ALEGoToDeclarationInVSplit<Return>
 nnoremap <silent> <Plug>(ale_go_to_definition_in_tab) :ALEGoToDefinitionInTab<Return>
 nnoremap <silent> <Plug>(ale_go_to_definition_in_split) :ALEGoToDefinitionInSplit<Return>
 nnoremap <silent> <Plug>(ale_go_to_definition_in_vsplit) :ALEGoToDefinitionInVSplit<Return>

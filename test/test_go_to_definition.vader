@@ -432,6 +432,10 @@ Execute(LSP definition requests should be sent):
   \   'textDocument': {'uri': ale#path#ToURI(expand('%:p'))},
   \   'position': {'line': 0, 'character': 2},
   \   }],
+  \   [0, 'textDocument/declaration', {
+  \   'textDocument': {'uri': ale#path#ToURI(expand('%:p'))},
+  \   'position': {'line': 0, 'character': 2},
+  \   }],
   \ ],
   \ g:message_list
 
@@ -501,6 +505,10 @@ Execute(LSP tab definition requests should be sent):
   \     'contentChanges': [{'text': join(getline(1, '$'), "\n") . "\n"}]
   \   }],
   \   [0, 'textDocument/definition', {
+  \   'textDocument': {'uri': ale#path#ToURI(expand('%:p'))},
+  \   'position': {'line': 0, 'character': 2},
+  \   }],
+  \   [0, 'textDocument/declaration', {
   \   'textDocument': {'uri': ale#path#ToURI(expand('%:p'))},
   \   'position': {'line': 0, 'character': 2},
   \   }],

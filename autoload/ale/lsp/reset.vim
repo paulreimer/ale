@@ -2,6 +2,11 @@
 function! ale#lsp#reset#StopAllLSPs() abort
     call ale#lsp#StopAll()
 
+    if exists('*ale#declaration#ClearLSPData')
+        " Clear the mapping for connections, etc.
+        call ale#declaration#ClearLSPData()
+    endif
+
     if exists('*ale#definition#ClearLSPData')
         " Clear the mapping for connections, etc.
         call ale#definition#ClearLSPData()
